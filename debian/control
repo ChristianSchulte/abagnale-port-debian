@@ -1,0 +1,25 @@
+Source: abagnale
+Section: net
+Priority: optional
+Maintainer: Christian Schulte <cs@schulte.it>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-sequence-installsysusers,
+ make,
+ bison,
+ libecpg-dev,
+Standards-Version: 4.7.2
+Homepage: https://github.com/jDTAUS/Abagnale
+Vcs-Browser: https://github.com/jDTAUS/Abagnale
+Vcs-Git: https://github.com/jDTAUS/Abagnale.git
+
+Package: abagnale
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+Description: algorithmic trading system
+ A high-performance algorithmic trading system built in ISO C for
+ traders and engineering teams that value deterministic execution,
+ transparency, and operational control.

@@ -1,0 +1,51 @@
+#!/bin/sh
+# Abagnale daily maintenance
+
+set -e
+umask 0077
+
+if ! getent passwd abagnale >/dev/null ||
+	! getent passwd postgres >/dev/null; then
+	exit 0
+fi
+
+ABAGNALE_BACKUPDIR=/var/lib/postgresql/abagnale/backups/$(date +%F)
+ABAGNALE_CONFIGFILE=/etc/abagnale/abagnale.conf
+
+if [ -f /etc/abagnale/abagnalectl.conf ]; then
+	ABAGNALE_CONFIGFILE=/etc/abagnale/abagnalectl.conf
+fi
+
+su -s /bin/sh -c "
+	set -e
+	umask 0027
+	if [ ! -d $ABAGNALE_BACKUPDIR ]; then
+		mkdir -p $ABAGNALE_BACKUPDIR
+	fi
+	pg_dump --schema-only --create --schema=public ABAGNALE \
+		> $ABAGNALE_BACKUPDIR/ABAGNALE-schema.sql
+
+	pg_dump --schema=public ABAGNALE \
+		-t '\"STATISTICS\"' -t '\"TRADES\"' -t '\"IDENTIFIERS\"' \
+		-t '\"TREND_STATES\"' \
+		$ABAGNALE_BACKUPDIR/ABAGNALE-data.sql
+" - postgres
+
+su -s /bin/sh -c "
+	set -e
+	umask 0027
+	abagnalectl -f $ABAGNALE_CONFIGFILE vacuum -a \
+		-b $ABAGNALE_BACKUPDIR
+" - abagnale
+
+su -s /bin/sh -c "
+	set -e
+	umask 0027
+	for i in $ABAGNALE_BACKUPDIR/*;do
+		if [ -f \$file ]; then
+			xz \$i
+		fi
+	done
+" - postgres
+
+exit 0

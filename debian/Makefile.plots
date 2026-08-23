@@ -1,0 +1,11 @@
+OUTDIR = /var/www/abagnale/plots/coinbase/trend
+
+.PHONY: all
+all:
+	mkdir -p $(OUTDIR); \
+	for m in *.m; do \
+		$(MAKE) $(OUTDIR)/$${m%.m}.svg; \
+	done
+
+$(OUTDIR)/%.svg: %.m
+	octave --quiet --no-gui --eval "run('$<'); print -dsvg '$@'" >/dev/null 2>/dev/null

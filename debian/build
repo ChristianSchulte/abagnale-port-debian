@@ -1,0 +1,20 @@
+#!/bin/sh
+set -e
+
+echo "Downloading upstream source..."
+uscan --download-current-version
+
+echo "Creating source package..."
+dpkg-buildpackage -S -us -uc --no-check-builddeps --source-option=-q
+
+echo "Extracting full source tree..."
+cd ..
+dpkg-source -x abagnale_0.*.dsc
+cd abagnale-0.*
+
+echo "Building binary package..."
+dpkg-buildpackage -b -us -uc
+
+echo
+echo "Done."
+ls -1 ../*.deb

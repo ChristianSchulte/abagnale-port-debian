@@ -1,0 +1,52 @@
+#!/usr/bin/make -f
+
+# See debhelper(7) (uncomment to enable).
+# Output every command that modifies files on the build system.
+#export DH_VERBOSE = 1
+
+
+# See FEATURE AREAS in dpkg-buildflags(1).
+#export DEB_BUILD_MAINT_OPTIONS = hardening=+all
+
+# See ENVIRONMENT in dpkg-buildflags(1).
+# Package maintainers to append CFLAGS.
+#export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
+# Package maintainers to append LDFLAGS.
+#export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+
+include /usr/share/dpkg/pkg-info.mk
+
+DIST_NAME	=	$(shell . /etc/os-release && echo "$$PRETTY_NAME")
+ARCHITECTURE_NAME	=	$(shell uname -m)
+BUILD_HOST	=	$(shell uname -n)
+BUILD_DATE	=	$(shell date -Iseconds)
+VERSION_H_PATCHED	=	version.h.deb-patched
+
+override_dh_auto_build:
+	cp -a version.h $(VERSION_H_PATCHED)
+	sed -i \
+		-e 's|@DIST_NAME@|$(DIST_NAME)|g' \
+		-e 's|@ARCHITECTURE_NAME@|$(ARCHITECTURE_NAME)|g' \
+		-e 's|@PACKAGE@|$(DEB_SOURCE)_$(DEB_VERSION)|g' \
+		-e 's|@BUILD_HOST@|$(BUILD_HOST)|g' \
+		-e 's|@BUILD_DATE@|$(BUILD_DATE)|g' \
+		version.h
+	dh_auto_build
+
+override_dh_installsystemd:
+	dh_installsystemd
+	dh_installsystemd --name=abagnalectl-daily
+
+override_dh_clean:
+	[ ! -f $(VERSION_H_PATCHED) ] || mv $(VERSION_H_PATCHED) version.h
+	dh_clean
+	rm -f $(VERSION_H_PATCHED)
+
+%:
+	dh $@
+
+# dh_make generated override targets.
+# This is an example for Cmake (see <https://bugs.debian.org/641051>).
+#override_dh_auto_configure:
+#	dh_auto_configure -- \
+#	-DCMAKE_LIBRARY_PATH=$(DEB_HOST_MULTIARCH)
