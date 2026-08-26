@@ -43,7 +43,7 @@ su -s /bin/sh -c "
 	umask 0027
 	for i in $ABAGNALE_BACKUPDIR/*;do
 		if [ -f \$file ]; then
-			xz \$i
+			xz \$file
 		fi
 	done
 " - postgres
