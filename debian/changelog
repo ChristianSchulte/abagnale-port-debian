@@ -1,5 +1,5 @@
-abagnale (0.9698-1) trixie; urgency=medium
+abagnale (0.9698-1+deb13u1) trixie; urgency=medium
 
-  * Initial Debian port.
+  * Initial Debian Trixie port.
 
  -- Christian Schulte <cs@schulte.it>  Wed, 26 Aug 2026 01:54:12 +0200
