@@ -1,3 +1,15 @@
+abagnale (0.9698-3+deb13u1) trixie; urgency=medium
+
+  * Merge branch unstable
+
+ -- Christian Schulte <cs@schulte.it>  Thu, 27 Aug 2026 17:05:44 +0200
+
+abagnale (0.9698-3) unstable; urgency=medium
+
+  * Corrected another typo in abagnalectl.daily
+
+ -- Christian Schulte <cs@schulte.it>  Thu, 27 Aug 2026 17:02:29 +0200
+
 abagnale (0.9698-2+deb13u2) trixie; urgency=medium
 
   * Merge branch unstable

@@ -41,7 +41,7 @@ su -s /bin/sh -c "
 su -s /bin/sh -c "
 	set -e
 	umask 0027
-	for i in $ABAGNALE_BACKUPDIR/*;do
+	for file in $ABAGNALE_BACKUPDIR/*;do
 		if [ -f \$file ]; then
 			xz \$file
 		fi
