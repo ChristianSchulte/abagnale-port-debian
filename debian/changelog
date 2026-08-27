@@ -1,4 +1,10 @@
-abagnale (0.9698-5) UNRELEASED; urgency=medium
+abagnale (0.9698-6) unstable; urgency=medium
+
+  * Prevent abagnalectl-daily.timer from retriggering immediately
+
+ -- Christian Schulte <cs@schulte.it>  Fri, 28 Aug 2026 00:29:31 +0200
+
+abagnale (0.9698-5) unstable; urgency=medium
 
   * Prevent abagnalectl-daily.service from starting at boot or update
 
