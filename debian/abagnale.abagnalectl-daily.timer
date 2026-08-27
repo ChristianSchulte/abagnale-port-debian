@@ -3,7 +3,7 @@ Description=Abagnale Algorithmic Trading System Daily Maintenance Timer
 
 [Timer]
 OnCalendar=daily
-Persistent=true
+Persistent=false
 
 [Install]
 WantedBy=timers.target
