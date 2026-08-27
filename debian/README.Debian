@@ -17,7 +17,7 @@ That role must be created before creating the database.
 Create the database by loading the SQL dump:
 
 	# su - postgres
-	$ psql -f /usr/local/share/abagnale/database-postgresql.sql
+	$ psql -f /usr/share/abagnale/database-postgresql.sql
 
 The service then can be enabled and started by issueing:
 
