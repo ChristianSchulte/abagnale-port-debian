@@ -1,3 +1,11 @@
+abagnale (0.9698-2) unstable; urgency=medium
+
+  * Corrected WorkingDirectory in abagnale.service
+  * Corrected typo in abagnalectl.daily
+  * Added note about pg_write_server_files to README.Debian
+
+ -- Christian Schulte <cs@schulte.it>  Thu, 27 Aug 2026 06:58:58 +0200
+
 abagnale (0.9698-1) unstable; urgency=medium
 
   * Initial Debian port.

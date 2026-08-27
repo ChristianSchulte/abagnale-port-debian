@@ -20,7 +20,7 @@ Index: abagnale-0.9698/abagnale.service
  StateDirectory=abagnale
  StateDirectoryMode=0750
 -WorkingDirectory=~
-+WorkingDirectory=${STATE_DIRECTORY}
++WorkingDirectory=%S/abagnale
  Environment=PATH=/usr/bin:/usr/local/bin
  Environment=LC_CTYPE=C.UTF-8
  #Environment=PGPASSFILE=/etc/abagnale/abagnale.pgpass

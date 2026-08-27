@@ -28,7 +28,7 @@ su -s /bin/sh -c "
 	pg_dump --schema=public ABAGNALE \
 		-t '\"STATISTICS\"' -t '\"TRADES\"' -t '\"IDENTIFIERS\"' \
 		-t '\"TREND_STATES\"' \
-		$ABAGNALE_BACKUPDIR/ABAGNALE-data.sql
+		> $ABAGNALE_BACKUPDIR/ABAGNALE-data.sql
 " - postgres
 
 su -s /bin/sh -c "
