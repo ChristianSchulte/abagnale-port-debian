@@ -1,3 +1,17 @@
+abagnale (0.9698-2+deb13u2) trixie; urgency=medium
+
+  * Merge branch unstable
+
+ -- Christian Schulte <cs@schulte.it>  Thu, 27 Aug 2026 07:04:10 +0200
+
+abagnale (0.9698-2) unstable; urgency=medium
+
+  * Corrected WorkingDirectory in abagnale.service
+  * Corrected typo in abagnalectl.daily
+  * Added note about pg_write_server_files to README.Debian
+
+ -- Christian Schulte <cs@schulte.it>  Thu, 27 Aug 2026 06:58:58 +0200
+
 abagnale (0.9698-1+deb13u1) trixie; urgency=medium
 
   * Initial Debian Trixie port.
