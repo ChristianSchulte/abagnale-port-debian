@@ -46,6 +46,7 @@ su -s /bin/sh -c "
 			xz \$file
 		fi
 	done
+	chmod -R 0640 $ABAGNALE_BACKUPDIR/*
 " - postgres
 
 exit 0
