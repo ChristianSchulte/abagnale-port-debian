@@ -1,11 +1,9 @@
 Description: Enables verbosity and plots
 Author: Christian Schulte <cs@schulte.it>
-Last-Update: 2026-08-26
+Last-Update: 2026-08-27
 
-Index: abagnale-0.9698/abagnale.service
-===================================================================
---- abagnale-0.9698.orig/abagnale.service
-+++ abagnale-0.9698/abagnale.service
+--- abagnale-0.9699.orig/abagnale.service
++++ abagnale-0.9699/abagnale.service
 @@ -5,7 +5,7 @@ Description=Abagnale Algorithmic Trading
  After=postgresql.service
  
@@ -15,12 +13,3 @@ Index: abagnale-0.9698/abagnale.service
  Restart=always
  RestartSec=300
  User=abagnale
-@@ -15,7 +15,7 @@ ConfigurationDirectory=abagnale
- ConfigurationDirectoryMode=0750
- StateDirectory=abagnale
- StateDirectoryMode=0750
--WorkingDirectory=~
-+WorkingDirectory=%S/abagnale
- Environment=PATH=/usr/bin:/usr/local/bin
- Environment=LC_CTYPE=C.UTF-8
- #Environment=PGPASSFILE=/etc/abagnale/abagnale.pgpass
