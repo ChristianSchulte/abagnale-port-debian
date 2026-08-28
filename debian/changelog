@@ -1,3 +1,15 @@
+abagnale (0.9700-2+deb13u1) trixie; urgency=medium
+
+  * Merge move abagnalectl.daily from usr/bin to usr/libexec/abagnale
+
+ -- Christian Schulte <cs@schulte.it>  Fri, 28 Aug 2026 09:51:31 +0200
+
+abagnale (0.9700-2) unstable; urgency=medium
+
+  * Move abagnalectl.daily from usr/bin to usr/libexec/abagnale
+
+ -- Christian Schulte <cs@schulte.it>  Fri, 28 Aug 2026 09:48:51 +0200
+
 abagnale (0.9700-1+deb13u1) trixie; urgency=medium
 
   * Merge upstream tag v0/9700 from branch unstable
