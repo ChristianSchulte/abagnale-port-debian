@@ -1,6 +1,5 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Source: https://github.com/jDTAUS/Abagnale/archive/refs/tags/v0/9698.tar.gz
-Upstream-Name: abagnale
+Upstream-Name: Abagnale
 Upstream-Contact: Christian Schulte <cs@schulte.it>
 
 Files:
