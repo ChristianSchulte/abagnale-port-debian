@@ -44,9 +44,9 @@ su -s /bin/sh -c "
 	for file in $ABAGNALE_BACKUPDIR/*;do
 		if [ -f \$file ]; then
 			xz \$file
+			chmod 0640 \$file
 		fi
 	done
-	chmod -R 0640 $ABAGNALE_BACKUPDIR/*
 " - postgres
 
 exit 0

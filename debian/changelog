@@ -1,3 +1,9 @@
+abagnale (0.9699-2) unstable; urgency=medium
+
+  * Updated abagnalectl.daily to not care about foreign subdirectories
+
+ -- Christian Schulte <cs@schulte.it>  Fri, 28 Aug 2026 02:42:23 +0200
+
 abagnale (0.9699-1) unstable; urgency=medium
 
   * Upstream tag v0/9699
