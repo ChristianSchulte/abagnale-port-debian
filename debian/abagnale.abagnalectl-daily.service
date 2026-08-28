@@ -5,7 +5,7 @@ Requires=postgresql.service
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/abagnalectl.daily
+ExecStart=/usr/libexec/abagnale/abagnalectl.daily
 UMask=0027
 Environment=PATH=/usr/bin:/usr/local/bin
 Environment=LC_CTYPE=C.UTF-8

@@ -1,3 +1,9 @@
+abagnale (0.9700-2) unstable; urgency=medium
+
+  * Move abagnalectl.daily from usr/bin to usr/libexec/abagnale
+
+ -- Christian Schulte <cs@schulte.it>  Fri, 28 Aug 2026 09:48:51 +0200
+
 abagnale (0.9700-1) unstable; urgency=medium
 
   * Upstream tag v0/9700
