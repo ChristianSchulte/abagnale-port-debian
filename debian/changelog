@@ -1,3 +1,9 @@
+abagnale (0.9700-1) unstable; urgency=medium
+
+  * Upstream tag v0/9700
+
+ -- Christian Schulte <cs@schulte.it>  Fri, 28 Aug 2026 09:04:42 +0200
+
 abagnale (0.9699-4) unstable; urgency=medium
 
   * Removed Source from debian/copyright
