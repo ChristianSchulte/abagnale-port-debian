@@ -1,5 +1,5 @@
 #!/bin/sh
-# Abagnale daily maintenance
+# Abagnale Algorithmic Trading System Database Maintenance
 
 set -e
 umask 0077
