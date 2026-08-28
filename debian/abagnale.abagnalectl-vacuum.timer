@@ -1,5 +1,5 @@
 [Unit]
-Description=Abagnale Algorithmic Trading System Daily Maintenance Timer
+Description=Abagnale Algorithmic Trading System Database Maintenance Timer
 
 [Timer]
 OnCalendar=daily
