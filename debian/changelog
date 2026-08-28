@@ -1,3 +1,15 @@
+abagnale (0.9700-3+deb13u1) trixie; urgency=medium
+
+  * Merge rename of abagnalectl.daily to .vacuum including service and timer
+
+ -- Christian Schulte <cs@schulte.it>  Fri, 28 Aug 2026 10:15:53 +0200
+
+abagnale (0.9700-3) unstable; urgency=medium
+
+  * Rename of abagnalectl.daily to .vacuum including service and timer
+
+ -- Christian Schulte <cs@schulte.it>  Fri, 28 Aug 2026 10:14:05 +0200
+
 abagnale (0.9700-2+deb13u1) trixie; urgency=medium
 
   * Merge move abagnalectl.daily from usr/bin to usr/libexec/abagnale
