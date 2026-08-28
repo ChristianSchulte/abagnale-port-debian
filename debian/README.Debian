@@ -30,15 +30,17 @@ Maintenance
 ===========
 
 The database should be vacuumed periodically by running abagnalectl vacuum.
-The package has setup an abagnalectl-daily service with corresponding timer.
+The package has setup an abagnalectl-vacuum service with corresponding timer.
 
-	# systemctl status abagnalectl-daily.timer
+	# systemctl status abagnalectl-vacuum.timer
 
-Depending on the distribution the abagnalectl-daily.service may have been
+Depending on the distribution the abagnalectl-vacuum.service may have been
 enabled automatically during installation. To stop the service from running
 on reboot or package updates disable the service manually by issueing.
 
-	# systemctl disable abagnalectl-daily.service
+	# systemctl disable abagnalectl-vacuum.service
+
+By default the abagnalectl-vacuum.timer is setup to run daily.
 
 Scaling
 =======
