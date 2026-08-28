@@ -34,6 +34,12 @@ The package has setup an abagnalectl-daily service with corresponding timer.
 
 	# systemctl status abagnalectl-daily.timer
 
+Depending on the distribution the abagnalectl-daily.service may have been
+enabled automatically during installation. To stop the service from running
+on reboot or package updates disable the service manually by issueing.
+
+	# systemctl disable abagnalectl-daily.service
+
 Scaling
 =======
 
@@ -46,8 +52,7 @@ the SAMPLES table. The -i command line option needs to be set to a UUID used
 to separate state of different processes in the database.
 
 	# su -u abagnale
-	$ echo "SELECT gen_random_uuid();" \
-		| psql -h database.fqdn -U abagnale ABAGNALE
+	$ echo "SELECT gen_random_uuid();" | psql -h database.fqdn ABAGNALE
 
 Example
 =======
@@ -89,7 +94,8 @@ everything Bitcoin at the Coinbase exchange.
 		take-loss-delay 18h take-loss-delays 1
 
 	# systemctl edit abagnale.service
-	ExecStart=/usr/bin/abagnale -v -p /var/abagnale/plots \
+	ExecStart=
+	ExecStart=/usr/bin/abagnale -v -p /var/lib/abagnale/plots \
 		-I SAMPLES -i 98430c6b-4cf0-46c5-8d02-41dd7e93a481
 
 	# systemctl restart abagnale
@@ -117,7 +123,8 @@ everything Euro at the Bitvavo exchange.
 		take-loss-delay 18h take-loss-delays 1
 
 	# systemctl edit abagnale.service
-	ExecStart=/usr/bin/abagnale -v -p /var/abagnale/plots \
+	ExecStart=
+	ExecStart=/usr/bin/abagnale -v -p /var/lib/abagnale/plots \
 		-I SAMPLES -i de6924a0-1a23-4680-8780-175d0e345f75
 
 	# systemctl restart abagnale
