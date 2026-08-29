@@ -1,3 +1,15 @@
+abagnale (0.9706-1+deb13u1) trixie; urgency=medium
+
+  * Merge upstream tag v0/9706
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 29 Aug 2026 13:39:47 +0200
+
+abagnale (0.9706-1) unstable; urgency=medium
+
+  * Upstream tag v0/9706
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 29 Aug 2026 13:34:54 +0200
+
 abagnale (0.9705-1+deb13u1) trixie; urgency=medium
 
   * Merge upstream tag v0/9705
