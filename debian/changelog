@@ -1,3 +1,15 @@
+abagnale (0.9705-1+deb13u1) trixie; urgency=medium
+
+  * Merge upstream tag v0/9705
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 29 Aug 2026 13:19:39 +0200
+
+abagnale (0.9705-1) unstable; urgency=medium
+
+  * Upstream tag v0/9705
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 29 Aug 2026 13:13:01 +0200
+
 abagnale (0.9700-3+deb13u1) trixie; urgency=medium
 
   * Merge rename of abagnalectl.daily to .vacuum including service and timer
