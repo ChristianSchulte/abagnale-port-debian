@@ -16,37 +16,31 @@ if [ -f /etc/abagnale/abagnalectl.conf ]; then
 	ABAGNALE_CONFIGFILE=/etc/abagnale/abagnalectl.conf
 fi
 
-su -s /bin/sh -c "
+runuser -u postgres -- sh -c '
 	set -e
 	umask 0027
-	if [ ! -d $ABAGNALE_BACKUPDIR ]; then
-		mkdir -p $ABAGNALE_BACKUPDIR
-	fi
+	mkdir -p "$1"
 	pg_dump --schema-only --create --schema=public ABAGNALE \
-		> $ABAGNALE_BACKUPDIR/ABAGNALE-schema.sql
+		> "$1/ABAGNALE-schema.sql"
 
 	pg_dump --schema=public ABAGNALE \
 		-t '\"STATISTICS\"' -t '\"TRADES\"' -t '\"IDENTIFIERS\"' \
 		-t '\"TREND_STATES\"' \
-		> $ABAGNALE_BACKUPDIR/ABAGNALE-data.sql
-" - postgres 2>&1
+			> "$1/ABAGNALE-data.sql"
+' sh "$ABAGNALE_BACKUPDIR"
 
-su -s /bin/sh -c "
+runuser -u abagnale -- abagnalectl -f "$ABAGNALE_CONFIGFILE" \
+	vacuum -a -b "$ABAGNALE_BACKUPDIR"
+
+runuser -u postgres -- sh -c '
 	set -e
 	umask 0027
-	abagnalectl -f $ABAGNALE_CONFIGFILE vacuum -a \
-		-b $ABAGNALE_BACKUPDIR
-" - abagnale 2>&1
-
-su -s /bin/sh -c "
-	set -e
-	umask 0027
-	for file in $ABAGNALE_BACKUPDIR/*;do
-		if [ -f \$file ]; then
-			xz \$file
-			chmod 0640 \$file
+	for file in "$1"/*;do
+		if [ -f "$file" ]; then
+			xz "$file"
+			chmod 0640 "$file.xz"
 		fi
 	done
-" - postgres 2>&1
+' sh "$ABAGNALE_BACKUPDIR"
 
 exit 0
