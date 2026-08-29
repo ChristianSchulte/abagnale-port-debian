@@ -1,3 +1,15 @@
+abagnale (0.9707-2+deb13u1) trixie; urgency=medium
+
+  * Merge updated abagnalectl.vacuum to use runuser instead of su
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 29 Aug 2026 15:37:27 +0200
+
+abagnale (0.9707-2) unstable; urgency=medium
+
+  * Updated abagnalectl.vacuum to use runuser instead of su
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 29 Aug 2026 15:22:24 +0200
+
 abagnale (0.9707-1+deb13u1) trixie; urgency=medium
 
   * Merge upstream tag v0/9707
