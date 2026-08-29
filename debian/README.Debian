@@ -29,8 +29,9 @@ Maintenance
 
 The database should be vacuumed periodically by running abagnalectl vacuum.
 The vacuum command of the abagnalectl maintenance application needs to be
-performed using a role granted the pg_write_server_files role.
+performed by a role granted pg_write_server_files.
 
+	# su - postgres
 	$ echo "GRANT pg_write_server_files TO abagnale \
 		WITH INHERIT TRUE, SET TRUE;" | psql
 
