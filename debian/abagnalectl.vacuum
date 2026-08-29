@@ -29,14 +29,14 @@ su -s /bin/sh -c "
 		-t '\"STATISTICS\"' -t '\"TRADES\"' -t '\"IDENTIFIERS\"' \
 		-t '\"TREND_STATES\"' \
 		> $ABAGNALE_BACKUPDIR/ABAGNALE-data.sql
-" - postgres
+" - postgres 2>&1
 
 su -s /bin/sh -c "
 	set -e
 	umask 0027
 	abagnalectl -f $ABAGNALE_CONFIGFILE vacuum -a \
 		-b $ABAGNALE_BACKUPDIR
-" - abagnale
+" - abagnale 2>&1
 
 su -s /bin/sh -c "
 	set -e
@@ -47,6 +47,6 @@ su -s /bin/sh -c "
 			chmod 0640 \$file
 		fi
 	done
-" - postgres
+" - postgres 2>&1
 
 exit 0

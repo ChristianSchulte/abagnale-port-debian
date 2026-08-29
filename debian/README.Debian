@@ -13,8 +13,6 @@ That role must be created before creating the database.
 
 	# su - postgres
 	$ echo "CREATE ROLE abagnale;" | psql
-	$ echo "GRANT pg_write_server_files TO abagnale \
-		WITH INHERIT FALSE, SET TRUE;" | psql
 
 Create the database by loading the SQL dump:
 
@@ -30,6 +28,12 @@ Maintenance
 ===========
 
 The database should be vacuumed periodically by running abagnalectl vacuum.
+The vacuum command of the abagnalectl maintenance application needs to be
+performed using a role granted the pg_write_server_files role.
+
+	$ echo "GRANT pg_write_server_files TO abagnale \
+		WITH INHERIT TRUE, SET TRUE;" | psql
+
 The package has setup an abagnalectl-vacuum service with corresponding timer.
 
 	# systemctl status abagnalectl-vacuum.timer

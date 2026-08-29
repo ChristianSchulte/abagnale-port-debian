@@ -1,3 +1,9 @@
+abagnale (0.9705-1) unstable; urgency=medium
+
+  * Upstream tag v0/9705
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 29 Aug 2026 13:13:01 +0200
+
 abagnale (0.9700-3) unstable; urgency=medium
 
   * Rename of abagnalectl.daily to .vacuum including service and timer

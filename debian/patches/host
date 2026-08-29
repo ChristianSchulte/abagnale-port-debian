@@ -1,9 +1,9 @@
-Description: Applies host specific updates
+Description: Applies host related updates
 Author: Christian Schulte <cs@schulte.it>
-Last-Update: 2026-08-28
+Last-Update: 2026-08-29
 
---- abagnale-0.9700.orig/Makefile
-+++ abagnale-0.9700/Makefile
+--- abagnale-0.9705.orig/Makefile
++++ abagnale-0.9705/Makefile
 @@ -39,7 +39,7 @@ INCLUDES+=-I/usr/local/include
  INCLUDES+=-I/usr/local/include/postgresql
  
@@ -22,13 +22,13 @@ Last-Update: 2026-08-28
  
  all: abagnale abagnalectl
  
---- abagnale-0.9700.orig/version.h
-+++ abagnale-0.9700/version.h
+--- abagnale-0.9705.orig/version.h
++++ abagnale-0.9705/version.h
 @@ -17,6 +17,6 @@
  #ifndef VERSION_H
  #define VERSION_H
  
--#define ABAG_REVISION "$Abagnale: v0/9700 2026-08-28 06:47:37Z $"
-+#define ABAG_REVISION "Abagnale: v0/9700 2026-08-28 06:47:37Z; @DIST_NAME@ @ARCHITECTURE_NAME@ @PACKAGE@ @BUILD_HOST@ @BUILD_DATE@;"
+-#define ABAG_REVISION "$Abagnale: v0/9705 2026-08-29 10:50:46Z $"
++#define ABAG_REVISION "Abagnale: v0/9705 2026-08-29 10:50:46Z; @DIST_NAME@ @ARCHITECTURE_NAME@ @PACKAGE@ @BUILD_HOST@ @BUILD_DATE@;"
  
  #endif
