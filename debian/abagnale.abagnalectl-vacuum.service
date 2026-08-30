@@ -7,7 +7,6 @@ Requires=postgresql.service
 Type=oneshot
 ExecStart=/usr/libexec/abagnale/abagnalectl.vacuum
 UMask=0027
-Environment=PATH=/usr/bin:/usr/local/bin
 Environment=LC_CTYPE=C.UTF-8
 #Environment=PGPASSFILE=/etc/abagnale/abagnale.pgpass
 #Environment=PGSERVICEFILE=/etc/abagnale/abagnale.pgservice
