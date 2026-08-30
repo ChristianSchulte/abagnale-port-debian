@@ -1,3 +1,9 @@
+abagnale (0.9707-3) unstable; urgency=medium
+
+  * Updated abagnalectl-vacuum.service to use provided PATH
+
+ -- Christian Schulte <cs@schulte.it>  Sun, 30 Aug 2026 15:20:57 +0200
+
 abagnale (0.9707-2) unstable; urgency=medium
 
   * Updated abagnalectl.vacuum to use runuser instead of su
