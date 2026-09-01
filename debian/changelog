@@ -1,3 +1,15 @@
+abagnale (0.9707-4+deb13u1) trixie; urgency=medium
+
+  * Merge simplyfied abagnalectl.vacuum output directories
+
+ -- Christian Schulte <cs@schulte.it>  Tue, 01 Sep 2026 11:40:36 +0200
+
+abagnale (0.9707-4) unstable; urgency=medium
+
+  * Simplyfied abagnalectl.vacuum output directories
+
+ -- Christian Schulte <cs@schulte.it>  Tue, 01 Sep 2026 11:37:53 +0200
+
 abagnale (0.9707-3+deb13u1) trixie; urgency=medium
 
   * Merge updated abagnalectl-vacuum.service to use provided PATH
