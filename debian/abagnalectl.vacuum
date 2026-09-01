@@ -9,7 +9,7 @@ if ! getent passwd abagnale >/dev/null ||
 	exit 0
 fi
 
-ABAGNALE_BACKUPDIR=/var/lib/postgresql/abagnale/backups/$(date +%F)
+ABAGNALE_BACKUPDIR=/var/lib/postgresql/abagnale/$(date +%F)
 ABAGNALE_CONFIGFILE=/etc/abagnale/abagnale.conf
 
 if [ -f /etc/abagnale/abagnalectl.conf ]; then
@@ -19,23 +19,30 @@ fi
 runuser -u postgres -- sh -c '
 	set -e
 	umask 0027
-	mkdir -p "$1"
+	mkdir -p "$1/dump"
+	mkdir -p "$1/vacuum"
 	pg_dump --schema-only --create --schema=public ABAGNALE \
-		> "$1/ABAGNALE-schema.sql"
+		> "$1/dump/ABAGNALE-schema.sql"
 
 	pg_dump --schema=public ABAGNALE \
 		-t "\"STATISTICS\"" -t "\"TRADES\"" -t "\"IDENTIFIERS\"" \
 		-t "\"TREND_STATES\"" \
-			> "$1/ABAGNALE-data.sql"
+			> "$1/dump/ABAGNALE-data.sql"
 ' sh "$ABAGNALE_BACKUPDIR"
 
 runuser -u abagnale -- abagnalectl -f "$ABAGNALE_CONFIGFILE" \
-	vacuum -a -b "$ABAGNALE_BACKUPDIR"
+	vacuum -a -b "$ABAGNALE_BACKUPDIR/vacuum"
 
 runuser -u postgres -- sh -c '
 	set -e
 	umask 0027
-	for file in "$1"/*;do
+	for file in "$1/dump"/*.sql;do
+		if [ -f "$file" ]; then
+			xz "$file"
+			chmod 0640 "$file.xz"
+		fi
+	done
+	for file in "$1/vacuum"/*;do
 		if [ -f "$file" ]; then
 			xz "$file"
 			chmod 0640 "$file.xz"
