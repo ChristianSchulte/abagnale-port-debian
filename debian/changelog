@@ -1,3 +1,9 @@
+abagnale (0.9708-1) unstable; urgency=medium
+
+  * Upstream tag v0/9708
+
+ -- Christian Schulte <cs@schulte.it>  Wed, 02 Sep 2026 08:49:44 +0200
+
 abagnale (0.9707-4) unstable; urgency=medium
 
   * Simplyfied abagnalectl.vacuum output directories
