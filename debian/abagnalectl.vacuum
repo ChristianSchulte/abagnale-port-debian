@@ -26,7 +26,9 @@ runuser -u postgres -- sh -c '
 
 	pg_dump --schema=public ABAGNALE \
 		-t "\"STATISTICS\"" -t "\"TRADES\"" -t "\"IDENTIFIERS\"" \
-		-t "\"TREND_STATES\"" \
+		-t "\"TREND_STATES\"" -t "\"TREND_CANDLES\"" \
+		-t "\"TREND_MARKERS\"" -t "\"TREND_PLOTS\"" \
+		-t "\"PLOTS\"" -t "\"SAMPLES\"" \
 			> "$1/dump/ABAGNALE-data.sql"
 ' sh "$ABAGNALE_BACKUPDIR"
 
