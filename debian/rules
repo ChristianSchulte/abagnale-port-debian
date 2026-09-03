@@ -43,7 +43,7 @@ override_dh_clean:
 	rm -f $(VERSION_H_PATCHED)
 
 %:
-	dh $@
+	dh $@ --without=single-binary
 
 # dh_make generated override targets.
 # This is an example for Cmake (see <https://bugs.debian.org/641051>).
