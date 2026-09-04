@@ -1,3 +1,15 @@
+abagnale (0.9709-1) trixie; urgency=medium
+
+  * Merge upstream tag v0/9709
+
+ -- Christian Schulte <cs@schulte.it>  Fri, 04 Sep 2026 16:46:58 +0200
+
+abagnale (0.9709-1) unstable; urgency=medium
+
+  * Upstream tag v0/9709
+
+ -- Christian Schulte <cs@schulte.it>  Fri, 04 Sep 2026 16:42:44 +0200
+
 abagnale (0.9708-2+deb13u1) trixie; urgency=medium
 
   * Merge update abagnalectl.vaccum to also dump plots and samples before vaccum
