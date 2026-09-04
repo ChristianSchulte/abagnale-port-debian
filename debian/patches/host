@@ -1,34 +1,14 @@
 Description: Applies host related updates
 Author: Christian Schulte <cs@schulte.it>
-Last-Update: 2026-09-02
+Last-Update: 2026-09-04
 
---- abagnale-0.9708.orig/Makefile
-+++ abagnale-0.9708/Makefile
-@@ -39,7 +39,7 @@ INCLUDES+=-I/usr/local/include
- INCLUDES+=-I/usr/local/include/postgresql
- 
- DEBUG=
--#DEBUG+=-g
-+DEBUG+=-g
- #DEBUG+=-O0
- #DEBUG+=-DABAG_HTTP_DEBUG
- #DEBUG+=-DABAG_MATH_DEBUG
-@@ -229,7 +229,7 @@ FORMATSRC+=time.c
- FORMATSRC+=database-postgresql.pgc
- FORMATSRC+=math-postgresql.c
- 
--CLEAN=$(OBJS) database-postgresql.c y.tab.h
-+CLEAN=$(OBJS) database-postgresql.c y.tab.h abagnale abagnalectl
- 
- all: abagnale abagnalectl
- 
---- abagnale-0.9708.orig/version.h
-+++ abagnale-0.9708/version.h
+--- abagnale-0.9709.orig/version.h
++++ abagnale-0.9709/version.h
 @@ -17,6 +17,6 @@
  #ifndef VERSION_H
  #define VERSION_H
  
--#define ABAG_REVISION "$Abagnale: v0/9708 2026-09-02 06:37:04Z $"
-+#define ABAG_REVISION "Abagnale: v0/9708 2026-09-02 06:37:04Z; @DIST_NAME@ @ARCHITECTURE_NAME@ @PACKAGE@ @BUILD_HOST@ @BUILD_DATE@;"
+-#define ABAG_REVISION "$Abagnale: v0/9709 2026-09-04 14:42:06Z $"
++#define ABAG_REVISION "Abagnale: v0/9709 2026-09-04 14:42:06Z; @DIST_NAME@ @ARCHITECTURE_NAME@ @PACKAGE@ @BUILD_HOST@ @BUILD_DATE@;"
  
  #endif
