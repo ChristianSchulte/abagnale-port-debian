@@ -1,3 +1,9 @@
+abagnale (0.9709-2) unstable; urgency=medium
+
+  * Split abagnalectl.vacuum into abagnalectl.vacuum and abagnalectl.dump
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 05 Sep 2026 07:28:33 +0200
+
 abagnale (0.9709-1) unstable; urgency=medium
 
   * Upstream tag v0/9709
