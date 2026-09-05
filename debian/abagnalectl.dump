@@ -1,0 +1,35 @@
+#!/bin/sh
+# Abagnale Algorithmic Trading System Database Maintenance
+
+set -e
+umask 0077
+
+if	! getent passwd postgres >/dev/null; then
+	exit 0
+fi
+
+ABAGNALE_BACKUPDIR=/var/lib/postgresql/abagnale/$(date +%F)
+
+runuser -u postgres -- sh -c '
+	set -e
+	umask 0027
+	mkdir -p "$1/dump"
+	pg_dump --schema-only --create --schema=public ABAGNALE \
+		> "$1/dump/ABAGNALE-schema.sql"
+
+	pg_dump --schema=public ABAGNALE \
+		-t "\"STATISTICS\"" -t "\"TRADES\"" -t "\"IDENTIFIERS\"" \
+		-t "\"TREND_STATES\"" -t "\"TREND_CANDLES\"" \
+		-t "\"TREND_MARKERS\"" -t "\"TREND_PLOTS\"" \
+		-t "\"PLOTS\"" -t "\"SAMPLES\"" \
+			> "$1/dump/ABAGNALE-data.sql"
+
+	for file in "$1/dump"/*.sql;do
+		if [ -f "$file" ]; then
+			xz "$file"
+			chmod 0640 "$file.xz"
+		fi
+	done
+' sh "$ABAGNALE_BACKUPDIR"
+
+exit 0

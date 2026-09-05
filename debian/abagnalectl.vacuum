@@ -19,17 +19,7 @@ fi
 runuser -u postgres -- sh -c '
 	set -e
 	umask 0027
-	mkdir -p "$1/dump"
 	mkdir -p "$1/vacuum"
-	pg_dump --schema-only --create --schema=public ABAGNALE \
-		> "$1/dump/ABAGNALE-schema.sql"
-
-	pg_dump --schema=public ABAGNALE \
-		-t "\"STATISTICS\"" -t "\"TRADES\"" -t "\"IDENTIFIERS\"" \
-		-t "\"TREND_STATES\"" -t "\"TREND_CANDLES\"" \
-		-t "\"TREND_MARKERS\"" -t "\"TREND_PLOTS\"" \
-		-t "\"PLOTS\"" -t "\"SAMPLES\"" \
-			> "$1/dump/ABAGNALE-data.sql"
 ' sh "$ABAGNALE_BACKUPDIR"
 
 runuser -u abagnale -- abagnalectl -f "$ABAGNALE_CONFIGFILE" \
@@ -38,12 +28,6 @@ runuser -u abagnale -- abagnalectl -f "$ABAGNALE_CONFIGFILE" \
 runuser -u postgres -- sh -c '
 	set -e
 	umask 0027
-	for file in "$1/dump"/*.sql;do
-		if [ -f "$file" ]; then
-			xz "$file"
-			chmod 0640 "$file.xz"
-		fi
-	done
 	for file in "$1/vacuum"/*;do
 		if [ -f "$file" ]; then
 			xz "$file"

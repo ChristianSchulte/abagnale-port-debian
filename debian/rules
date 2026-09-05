@@ -36,6 +36,7 @@ override_dh_auto_build:
 override_dh_installsystemd:
 	dh_installsystemd
 	dh_installsystemd --name=abagnalectl-vacuum
+	dh_installsystemd --name=abagnalectl-dump
 
 override_dh_clean:
 	[ ! -f $(VERSION_H_PATCHED) ] || mv $(VERSION_H_PATCHED) version.h

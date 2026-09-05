@@ -1,5 +1,6 @@
 abagnale usr/bin/
 abagnalectl usr/bin/
 debian/abagnalectl.vacuum usr/libexec/abagnale/
+debian/abagnalectl.dump usr/libexec/abagnale/
 abagnale.conf etc/abagnale/
 database-postgresql.sql usr/share/abagnale/

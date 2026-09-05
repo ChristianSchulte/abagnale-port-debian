@@ -1,0 +1,12 @@
+[Unit]
+Description=Abagnale Algorithmic Trading System Database Maintenance
+After=postgresql.service
+Requires=postgresql.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/abagnale/abagnalectl.dump
+UMask=0027
+Environment=LC_CTYPE=C.UTF-8
+#Environment=PGPASSFILE=/etc/abagnale/abagnale.pgpass
+#Environment=PGSERVICEFILE=/etc/abagnale/abagnale.pgservice
