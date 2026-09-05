@@ -1,14 +1,14 @@
 Description: Applies host related updates
 Author: Christian Schulte <cs@schulte.it>
-Last-Update: 2026-09-04
+Last-Update: 2026-09-05
 
---- abagnale-0.9709.orig/version.h
-+++ abagnale-0.9709/version.h
+--- abagnale-0.9711.orig/version.h
++++ abagnale-0.9711/version.h
 @@ -17,6 +17,6 @@
  #ifndef VERSION_H
  #define VERSION_H
  
--#define ABAG_REVISION "$Abagnale: v0/9709 2026-09-04 14:42:06Z $"
-+#define ABAG_REVISION "Abagnale: v0/9709 2026-09-04 14:42:06Z; @DIST_NAME@ @ARCHITECTURE_NAME@ @PACKAGE@ @BUILD_HOST@ @BUILD_DATE@;"
+-#define ABAG_REVISION "$Abagnale: v0/9711 2026-09-05 21:16:38Z $"
++#define ABAG_REVISION "Abagnale: v0/9711 2026-09-05 21:16:38Z; @DIST_NAME@ @ARCHITECTURE_NAME@ @PACKAGE@ @BUILD_HOST@ @BUILD_DATE@;"
  
  #endif
