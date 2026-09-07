@@ -56,6 +56,18 @@ Copyright:
  2026 Christian Schulte <cs@schulte.it>
 License: ISC
 
+Files:
+ config.y
+Copyright:
+ 2025-2026 Christian Schulte <cs@schulte.it>
+ 2008 Gilles Chehade <gilles@poolp.org>
+ 2008 Pierre-Yves Ritschard <pyr@openbsd.org>
+ 2002-2004 Henning Brauer <henning@openbsd.org>
+ 2001 Markus Friedl.  All rights reserved.
+ 2001 Daniel Hartmeier.  All rights reserved.
+ 2001 Theo de Raadt.  All rights reserved.
+License: ISC
+
 License: ISC
  Permission to use, copy, modify, and/or distribute this software for
  any purpose with or without fee is hereby granted, provided that the
