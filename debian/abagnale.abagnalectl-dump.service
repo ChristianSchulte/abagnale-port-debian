@@ -4,9 +4,9 @@ After=postgresql.service
 Requires=postgresql.service
 
 [Service]
-Type=oneshot
-ExecStart=/usr/libexec/abagnale/abagnalectl.dump
-UMask=0027
 Environment=LC_CTYPE=C.UTF-8
+ExecStart=/usr/libexec/abagnale/abagnalectl.dump
+Type=oneshot
+UMask=0027
 #Environment=PGPASSFILE=/etc/abagnale/abagnale.pgpass
 #Environment=PGSERVICEFILE=/etc/abagnale/abagnale.pgservice

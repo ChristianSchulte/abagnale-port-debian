@@ -1,8 +1,6 @@
 #!/bin/sh
 # Abagnale Algorithmic Trading System Database Maintenance
-
 set -e
-umask 0077
 
 if	! getent passwd postgres >/dev/null; then
 	exit 0
@@ -12,7 +10,6 @@ ABAGNALE_BACKUPDIR=/var/lib/postgresql/abagnale/$(date +%F)
 
 runuser -u postgres -- sh -c '
 	set -e
-	umask 0027
 	mkdir -p "$1/dump"
 	pg_dump --schema-only --create --schema=public ABAGNALE \
 		> "$1/dump/ABAGNALE-schema.sql"

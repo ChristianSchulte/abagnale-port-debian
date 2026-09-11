@@ -1,3 +1,11 @@
+abagnale (0.9717-2) unstable; urgency=medium
+
+  * abagnalectl.plots with hourly timer for publishing plots as SVG files
+  * Removed hard coded umask settings in timer jobs to honor systemd
+    umask settings
+
+ -- Christian Schulte <cs@schulte.it>  Fri, 11 Sep 2026 14:18:25 +0200
+
 abagnale (0.9717-1) unstable; urgency=medium
 
   * Upstream tag v0/9717
