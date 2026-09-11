@@ -4,9 +4,6 @@ After=postgresql.service
 Requires=postgresql.service
 
 [Service]
-Type=oneshot
-ExecStart=/usr/libexec/abagnale/abagnalectl.vacuum
-UMask=0027
 Environment=LC_CTYPE=C.UTF-8
 #Environment=PGPASSFILE=/etc/abagnale/abagnale.pgpass
 #Environment=PGSERVICEFILE=/etc/abagnale/abagnale.pgservice
@@ -42,3 +39,6 @@ Environment=LC_CTYPE=C.UTF-8
 #Environment=BITVAVO_REQUESTS_PER_SECOND=16
 #Environment=BITVAVO_WS_STALL_MILLIS=3600000
 #Environment=BITVAVO_WS_RETRY_SECONDS=3
+ExecStart=/usr/libexec/abagnale/abagnalectl.vacuum
+Type=oneshot
+UMask=0027

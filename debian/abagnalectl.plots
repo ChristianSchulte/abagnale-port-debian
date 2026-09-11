@@ -1,0 +1,26 @@
+#!/bin/sh
+set -e
+
+PLOTSDIR=/var/lib/abagnale/plots
+SVGDIR=/var/www/abagnale/plots
+
+if ! getent passwd abagnale >/dev/null ||
+	! getent passwd www-data >/dev/null ||
+	! command -v octave >/dev/null; then
+	exit 0
+fi
+
+runuser -u www-data -- sh -c '
+	set -e
+	mkdir -p "$2"
+	for m in "$1"/bitvavo/trend/*.m "$1"/coinbase/trend/*.m; do
+		[ -f "$m" ] || continue
+		rel="${m#$1/}"
+		svg="$2/${rel%.m}.svg"
+		[ -f "$svg" ] && [ "$svg" -nt "$m" ] && continue
+		mkdir -p "$(dirname "$svg")"
+		octave --quiet --no-gui --eval \
+			"run(\"$m\"); print -dsvg \"$svg\"" \
+			>/dev/null 2>/dev/null || echo "Failure creating $svg"
+	done
+' sh "$PLOTSDIR" "$SVGDIR"

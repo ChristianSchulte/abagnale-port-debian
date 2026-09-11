@@ -1,8 +1,6 @@
 #!/bin/sh
 # Abagnale Algorithmic Trading System Database Maintenance
-
 set -e
-umask 0077
 
 if ! getent passwd abagnale >/dev/null ||
 	! getent passwd postgres >/dev/null; then
@@ -18,7 +16,6 @@ fi
 
 runuser -u postgres -- sh -c '
 	set -e
-	umask 0027
 	mkdir -p "$1/vacuum"
 ' sh "$ABAGNALE_BACKUPDIR"
 
@@ -27,7 +24,6 @@ runuser -u abagnale -- abagnalectl -f "$ABAGNALE_CONFIGFILE" \
 
 runuser -u postgres -- sh -c '
 	set -e
-	umask 0027
 	for file in "$1/vacuum"/*;do
 		if [ -f "$file" ]; then
 			xz "$file"
