@@ -21,8 +21,11 @@ runuser -u postgres -- sh -c '
 	mkdir -p "$1/vacuum"
 ' sh "$ABAGNALE_BACKUPDIR" "$UMASK"
 
-runuser -u abagnale -- abagnalectl -f "$ABAGNALE_CONFIGFILE" \
-	vacuum -a -b "$ABAGNALE_BACKUPDIR/vacuum"
+runuser -u abagnale -- sh -c '
+	set -e
+	umask "$3"
+	abagnalectl -f "$1" vacuum -a -b "$2/vacuum"
+' sh "$ABAGNALE_CONFIGFILE" "$ABAGNALE_BACKUPDIR" "$UMASK"
 
 runuser -u postgres -- sh -c '
 	set -e
@@ -30,7 +33,6 @@ runuser -u postgres -- sh -c '
 	for file in "$1/vacuum"/*;do
 		if [ -f "$file" ] && [ -s "$file" ]; then
 			xz "$file"
-			chmod 0640 "$file.xz"
 		elif [ -f "$file" ]; then
 			rm "$file"
 		fi
