@@ -2,17 +2,19 @@
 # Abagnale Algorithmic Trading System Plot Publishing
 set -e
 
-PLOTSDIR=/var/lib/abagnale/plots
-SVGDIR=/var/www/abagnale/plots
-
 if ! getent passwd abagnale >/dev/null ||
 	! getent passwd www-data >/dev/null ||
 	! command -v octave >/dev/null; then
 	exit 0
 fi
 
+UMASK=$(umask)
+PLOTSDIR=/var/lib/abagnale/plots
+SVGDIR=/var/www/abagnale/plots
+
 runuser -u www-data -- sh -c '
 	set -e
+	umask "$3"
 	mkdir -p "$2"
 	for m in "$1"/bitvavo/trend/*.m "$1"/coinbase/trend/*.m; do
 		[ -f "$m" ] || continue
@@ -24,4 +26,4 @@ runuser -u www-data -- sh -c '
 			"run(\"$m\"); print -dsvg \"$svg\"" \
 			>/dev/null 2>/dev/null || echo "Failure creating $svg"
 	done
-' sh "$PLOTSDIR" "$SVGDIR"
+' sh "$PLOTSDIR" "$SVGDIR" "$UMASK"
