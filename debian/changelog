@@ -1,3 +1,15 @@
+abagnale (0.9724-1+deb13u1) trixie; urgency=medium
+
+  * Merge upstream tag v0/9724
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 12 Sep 2026 23:17:15 +0200
+
+abagnale (0.9724-1) unstable; urgency=medium
+
+  * Upstream tag v0/9724
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 12 Sep 2026 23:13:50 +0200
+
 abagnale (0.9723-2+deb13u1) trixie; urgency=medium
 
   * Merge rename of abagnalectl.plots to abagnalectl.publish
