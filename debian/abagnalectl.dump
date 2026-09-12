@@ -26,6 +26,7 @@ runuser -u postgres -- sh -c '
 	for file in "$1/dump"/*.sql;do
 		if [ -f "$file" ] && [ -s "$file" ]; then
 			xz "$file"
+			chmod =rw "$file.xz"
 		elif [ -f "$file" ]; then
 			rm "$file"
 		fi
