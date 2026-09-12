@@ -19,6 +19,8 @@ Architecture: any
 Depends:
  ${shlibs:Depends},
  ${misc:Depends},
+Suggests:
+ octave,
 Description: algorithmic trading system
  A high-performance algorithmic trading system built in ISO C for
  traders and engineering teams that value deterministic execution,
