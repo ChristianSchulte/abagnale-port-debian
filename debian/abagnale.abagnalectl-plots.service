@@ -1,8 +1,0 @@
-[Unit]
-Description=Abagnale Algorithmic Trading System Plot Publishing
-
-[Service]
-Environment=LC_CTYPE=C.UTF-8
-ExecStart=/usr/libexec/abagnale/abagnalectl.plots
-Type=oneshot
-UMask=0022
