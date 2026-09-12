@@ -7,6 +7,7 @@ if ! getent passwd abagnale >/dev/null ||
 	exit 0
 fi
 
+UMASK=$(umask)
 ABAGNALE_BACKUPDIR=/var/lib/postgresql/abagnale/$(date +%F)
 ABAGNALE_CONFIGFILE=/etc/abagnale/abagnale.conf
 
@@ -16,14 +17,16 @@ fi
 
 runuser -u postgres -- sh -c '
 	set -e
+	umask "$2"
 	mkdir -p "$1/vacuum"
-' sh "$ABAGNALE_BACKUPDIR"
+' sh "$ABAGNALE_BACKUPDIR" "$UMASK"
 
 runuser -u abagnale -- abagnalectl -f "$ABAGNALE_CONFIGFILE" \
 	vacuum -a -b "$ABAGNALE_BACKUPDIR/vacuum"
 
 runuser -u postgres -- sh -c '
 	set -e
+	umask "$2"
 	for file in "$1/vacuum"/*;do
 		if [ -f "$file" ] && [ -s "$file" ]; then
 			xz "$file"
@@ -32,6 +35,6 @@ runuser -u postgres -- sh -c '
 			rm "$file"
 		fi
 	done
-' sh "$ABAGNALE_BACKUPDIR"
+' sh "$ABAGNALE_BACKUPDIR" "$UMASK"
 
 exit 0

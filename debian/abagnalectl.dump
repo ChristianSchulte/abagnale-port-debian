@@ -6,10 +6,12 @@ if	! getent passwd postgres >/dev/null; then
 	exit 0
 fi
 
+UMASK=$(umask)
 ABAGNALE_BACKUPDIR=/var/lib/postgresql/abagnale/$(date +%F)
 
 runuser -u postgres -- sh -c '
 	set -e
+	umask "$2"
 	mkdir -p "$1/dump"
 	pg_dump --schema-only --create --schema=public ABAGNALE \
 		> "$1/dump/ABAGNALE-schema.sql"
@@ -22,11 +24,12 @@ runuser -u postgres -- sh -c '
 			> "$1/dump/ABAGNALE-data.sql"
 
 	for file in "$1/dump"/*.sql;do
-		if [ -f "$file" ]; then
+		if [ -f "$file" ] && [ -s "$file" ]; then
 			xz "$file"
-			chmod 0640 "$file.xz"
+		elif [ -f "$file" ]; then
+			rm "$file"
 		fi
 	done
-' sh "$ABAGNALE_BACKUPDIR"
+' sh "$ABAGNALE_BACKUPDIR" "$UMASK"
 
 exit 0
