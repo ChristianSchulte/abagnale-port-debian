@@ -1,0 +1,8 @@
+[Unit]
+Description=Abagnale Algorithmic Trading System Publishing
+
+[Service]
+Environment=LC_CTYPE=C.UTF-8
+ExecStart=/usr/libexec/abagnale/abagnalectl.publish
+Type=oneshot
+UMask=0022

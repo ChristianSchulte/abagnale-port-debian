@@ -1,5 +1,5 @@
 #!/bin/sh
-# Abagnale Algorithmic Trading System Plot Publishing
+# Abagnale Algorithmic Trading System Publishing
 set -e
 
 if ! getent passwd abagnale >/dev/null ||

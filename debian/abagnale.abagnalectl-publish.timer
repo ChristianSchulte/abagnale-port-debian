@@ -1,5 +1,5 @@
 [Unit]
-Description=Abagnale Algorithmic Trading System Plot Pusblishing Timer
+Description=Abagnale Algorithmic Trading System Pusblishing Timer
 
 [Timer]
 OnCalendar=hourly
