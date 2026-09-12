@@ -25,9 +25,11 @@ runuser -u abagnale -- abagnalectl -f "$ABAGNALE_CONFIGFILE" \
 runuser -u postgres -- sh -c '
 	set -e
 	for file in "$1/vacuum"/*;do
-		if [ -f "$file" ]; then
+		if [ -f "$file" ] && [ -s "$file" ]; then
 			xz "$file"
 			chmod 0640 "$file.xz"
+		elif [ -f "$file" ]; then
+			rm "$file"
 		fi
 	done
 ' sh "$ABAGNALE_BACKUPDIR"
