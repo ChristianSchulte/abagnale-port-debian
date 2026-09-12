@@ -1,3 +1,9 @@
+abagnale (0.9718-1) unstable; urgency=medium
+
+  * Upstream tag v0/9718
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 12 Sep 2026 08:05:29 +0200
+
 abagnale (0.9717-2) unstable; urgency=medium
 
   * abagnalectl.plots with hourly timer for publishing plots as SVG files
