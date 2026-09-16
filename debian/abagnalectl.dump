@@ -1,5 +1,5 @@
 #!/bin/sh
-# Abagnale Algorithmic Trading System Database Maintenance
+# Abagnale Algorithmic Trading System Database Dumping
 set -e
 
 if	! getent passwd postgres >/dev/null; then

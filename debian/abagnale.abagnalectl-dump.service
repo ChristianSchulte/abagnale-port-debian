@@ -1,5 +1,5 @@
 [Unit]
-Description=Abagnale Algorithmic Trading System Database Maintenance
+Description=Abagnale Algorithmic Trading System Database Dumping
 After=postgresql.service
 Requires=postgresql.service
 
