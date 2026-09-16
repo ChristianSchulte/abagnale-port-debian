@@ -2,16 +2,16 @@
 # Abagnale Algorithmic Trading System Publishing
 set -e
 
-if ! getent passwd abagnale >/dev/null ||
-	! getent passwd www-data >/dev/null ||
-	! command -v octave >/dev/null ||
-	[ ! -d /var/www ]; then
-	exit 0
-fi
-
 UMASK=$(umask)
 PLOTSDIR=/var/lib/abagnale/plots
-SVGDIR=/var/www/abagnale/plots
+PUBLISHDIR=/var/www/abagnale/plots
+
+if ! getent passwd www-data >/dev/null ||
+	! command -v octave >/dev/null ||
+	[ ! -d /var/www ] ||
+	[ ! -d "$PLOTSDIR" ]; then
+	exit 0
+fi
 
 if [ ! -d /var/www/abagnale ]; then
 	mkdir /var/www/abagnale
@@ -32,4 +32,4 @@ runuser -u www-data -- sh -c '
 			"run(\"$m\"); print -dsvg \"$svg\"" \
 			>/dev/null 2>/dev/null || echo "Failure creating $svg"
 	done
-' sh "$PLOTSDIR" "$SVGDIR" "$UMASK"
+' sh "$PLOTSDIR" "$PUBLISHDIR" "$UMASK"
