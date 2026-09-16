@@ -1,5 +1,5 @@
 [Unit]
-Description=Abagnale Algorithmic Trading System Database Maintenance
+Description=Abagnale Algorithmic Trading System Database Vacuuming
 After=postgresql.service
 Requires=postgresql.service
 

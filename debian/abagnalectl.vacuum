@@ -1,5 +1,5 @@
 #!/bin/sh
-# Abagnale Algorithmic Trading System Database Maintenance
+# Abagnale Algorithmic Trading System Database Vacuuming
 set -e
 
 if ! getent passwd abagnale >/dev/null ||
