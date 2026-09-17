@@ -26,7 +26,9 @@ for m in "$PLOTSDIR"/bitvavo/trend/*.m "$PLOTSDIR"/coinbase/trend/*.m; do
 		[ -f "$html" ] && [ "$html" -nt "$m" ] && \
 		continue
 	mkdir -p "$(dirname "$svg")"
-	octave --quiet --no-gui --eval \
-		"run(\"$m\"); print -dsvg \"$svg\"; print -dcanvas \"$html\"" \
+	octave --quiet --no-gui --eval "\
+		run(\"$m\"); \
+		print(\"-dsvg\", \"$svg\"); \
+		print(\"-dcanvas\", \"-jsdir\", \"gnuplot\", \"$html\")" \
 		>/dev/null 2>/dev/null || echo "Failure publishing $m"
 done
