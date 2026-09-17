@@ -4,32 +4,29 @@ set -e
 
 UMASK=$(umask)
 PLOTSDIR=/var/lib/abagnale/plots
-PUBLISHDIR=/var/www/abagnale/plots
+PUBLISHDIR=/var/cache/abagnale/publish
 
-if ! getent passwd www-data >/dev/null ||
-	! command -v octave >/dev/null ||
-	[ ! -d /var/www ] ||
-	[ ! -d "$PLOTSDIR" ]; then
+if [ "$(id -un)" != "abagnale" ]; then
+	echo "abagnalectl.publish must be run as user abagnale" >&2
+	exit 1
+fi
+
+if ! command -v octave >/dev/null || [ ! -d "$PLOTSDIR" ]; then
 	exit 0
 fi
 
-if [ ! -d /var/www/abagnale ]; then
-	mkdir /var/www/abagnale
-	chown www-data:www-data /var/www/abagnale
-fi
+mkdir -p "$PUBLISHDIR"
 
-runuser -u www-data -- sh -c '
-	set -e
-	umask "$3"
-	mkdir -p "$2"
-	for m in "$1"/bitvavo/trend/*.m "$1"/coinbase/trend/*.m; do
-		[ -f "$m" ] || continue
-		rel="${m#$1/}"
-		svg="$2/${rel%.m}.svg"
-		[ -f "$svg" ] && [ "$svg" -nt "$m" ] && continue
-		mkdir -p "$(dirname "$svg")"
-		octave --quiet --no-gui --eval \
-			"run(\"$m\"); print -dsvg \"$svg\"" \
-			>/dev/null 2>/dev/null || echo "Failure creating $svg"
-	done
-' sh "$PLOTSDIR" "$PUBLISHDIR" "$UMASK"
+for m in "$PLOTSDIR"/bitvavo/trend/*.m "$PLOTSDIR"/coinbase/trend/*.m; do
+	[ -f "$m" ] || continue
+	rel="${m#$PLOTSDIR/}"
+	svg="$PUBLISHDIR/${rel%.m}.svg"
+	html="$PUBLISHDIR/${rel%.m}.html"
+	[ -f "$svg" ] && [ "$svg" -nt "$m" ] && \
+		[ -f "$html" ] && [ "$html" -nt "$m" ] && \
+		continue
+	mkdir -p "$(dirname "$svg")"
+	octave --quiet --no-gui --eval \
+		"run(\"$m\"); print -dsvg \"$svg\"; print -dcanvas \"$html\"" \
+		>/dev/null 2>/dev/null || echo "Failure publishing $m"
+done
