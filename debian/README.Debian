@@ -47,6 +47,42 @@ on reboot or package updates disable the service manually by issueing.
 
 By default the abagnalectl-vacuum.timer is setup to run daily.
 
+The package also has setup an abagnalectl-dump service with corresponding
+timer for creating database dumps.
+
+	# systemctl status abagnalectl-dump.timer
+
+By default the abagnalectl-dump.timer is setup to run daily.
+
+Vacuum copies and database dumps will be written to the abagnale subdirectory
+of the PostgreSQL state directory /var/lib/postgresql.
+
+
+Publishing
+==========
+
+The abagnale.service by default runs with verbosity and plotting enabled by
+using the '-v' and '-p' command line options. Plots will be written to the
+services state directory (/var/lib/abagnale). The package has setup an
+abagnalectl-publish service with corresponding timer for publishing plots.
+
+	# systemctl status abagnalectl-publish.timer
+
+Plots will be published to the services cache directory (/var/cache/abagnale).
+
+Depending on the http software used the published plots can be served from
+that directory. A configuration for the Apache 2 http server could contain an
+alias like the following.
+
+	Alias /abagnale /var/cache/abagnale/publish
+	<Directory /var/cache/abagnale/publish>
+		Options Indexes FollowSymLinks
+		AllowOverride None
+		Require all granted
+	</Directory>
+
+By default the abagnalectl-publish.timer is setup to run hourly.
+
 Scaling
 =======
 
