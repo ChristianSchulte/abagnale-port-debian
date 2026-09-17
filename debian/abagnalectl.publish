@@ -21,15 +21,12 @@ for m in "$PLOTSDIR"/bitvavo/trend/*.m "$PLOTSDIR"/coinbase/trend/*.m; do
 	[ -f "$m" ] || continue
 	rel="${m#$PLOTSDIR/}"
 	svg="$PUBLISHDIR/${rel%.m}.svg"
-	html="$PUBLISHDIR/${rel%.m}.html"
-	[ -f "$svg" ] && [ "$svg" -nt "$m" ] && \
-		[ -f "$html" ] && [ "$html" -nt "$m" ] && \
-		continue
+	[ -f "$svg" ] && [ "$svg" -nt "$m" ] && continue
 	mkdir -p "$(dirname "$svg")"
 	octave --quiet --no-gui --eval "\
 		run(\"$m\"); \
 		print(\"-dsvg\", \"$svg\"); \
-		graphics_toolkit(\"gnuplot\"); \
-		drawnow(\"canvas enhanced standalone mousing jsdir '/gnuplotjs'\", \"$html\");" \
-		>/dev/null 2>/dev/null || echo "Failure publishing $m"
+	" >/dev/null 2>/dev/null || echo "Failure publishing $m"
 done
+
+exit 0
