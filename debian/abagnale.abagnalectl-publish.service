@@ -2,7 +2,11 @@
 Description=Abagnale Algorithmic Trading System Publishing
 
 [Service]
-Environment=LC_CTYPE=C.UTF-8
-ExecStart=/usr/libexec/abagnale/abagnalectl.publish
 Type=oneshot
+User=abagnale
+Group=abagnale
 UMask=0022
+Environment=LC_CTYPE=C.UTF-8
+CacheDirectory=abagnale
+CacheDirectoryMode=0755
+ExecStart=/usr/libexec/abagnale/abagnalectl.publish
