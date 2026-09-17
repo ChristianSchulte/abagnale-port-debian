@@ -29,6 +29,6 @@ for m in "$PLOTSDIR"/bitvavo/trend/*.m "$PLOTSDIR"/coinbase/trend/*.m; do
 	octave --quiet --no-gui --eval "\
 		run(\"$m\"); \
 		print(\"-dsvg\", \"$svg\"); \
-		print(\"-dcanvas\", \"-jsdir\", \"gnuplot\", \"$html\")" \
+		print(\"-dcanvas\", \"-jsdir\", \"gnuplotjs\", \"$html\")" \
 		>/dev/null 2>/dev/null || echo "Failure publishing $m"
 done
