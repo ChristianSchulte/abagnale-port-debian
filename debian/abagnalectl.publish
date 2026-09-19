@@ -6,12 +6,12 @@ PLOTSDIR=/var/lib/abagnale/plots
 PUBLISHDIR=/var/cache/abagnale/publish
 
 if [ "$(id -un)" != "abagnale" ]; then
-	echo "$0 must be run as user abagnale" >&2
+	echo "not user abagnale" >&2
 	exit 1
 fi
 
 if ! command -v octave >/dev/null; then
-	echo "$0 required octave command not installed" >&2
+	echo "no octave command" >&2
 	exit 1
 fi
 
