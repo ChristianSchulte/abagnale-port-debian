@@ -1,3 +1,9 @@
+abagnale (0.9743-1) unstable; urgency=medium
+
+  * Upstream tag v0/9743
+
+ -- Christian Schulte <cs@schulte.it>  Wed, 23 Sep 2026 08:08:09 +0200
+
 abagnale (0.9737-2) unstable; urgency=medium
 
   * abagnalectl.publish has been updated to publish to cache directory abagnale
