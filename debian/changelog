@@ -1,3 +1,9 @@
+abagnale (0.9799-1) unstable; urgency=medium
+
+  * Upstream tag v0/9799
+
+ -- Christian Schulte <cs@schulte.it>  Tue, 06 Oct 2026 02:12:51 +0200
+
 abagnale (0.9798-2) unstable; urgency=medium
 
   * Rename script file in /usr/libexec/abagnale to match service names
