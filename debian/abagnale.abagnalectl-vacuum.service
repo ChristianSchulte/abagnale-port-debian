@@ -5,8 +5,8 @@ Requires=postgresql.service
 
 [Service]
 Environment=LC_CTYPE=C.UTF-8
-#Environment=PGPASSFILE=/etc/abagnale/abagnale.pgpass
-#Environment=PGSERVICEFILE=/etc/abagnale/abagnale.pgservice
+#Environment=PGPASSFILE=~/.pgpass
+#Environment=PGSERVICEFILE=~/.pgservice
 #Environment=ABAG_CONFIG_FILE=/etc/abagnale/abagnale.conf
 #Environment=ABAG_DATABASE_TARGET=ABAGNALE
 #Environment=ABAG_DATABASE_USER=abagnale

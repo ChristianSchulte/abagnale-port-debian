@@ -8,5 +8,5 @@ Environment=LC_CTYPE=C.UTF-8
 ExecStart=/usr/libexec/abagnale/abagnalectl-dump
 Type=oneshot
 UMask=0027
-#Environment=PGPASSFILE=/etc/abagnale/abagnale.pgpass
-#Environment=PGSERVICEFILE=/etc/abagnale/abagnale.pgservice
+#Environment=PGPASSFILE=~/.pgpass
+#Environment=PGSERVICEFILE=~/.pgservice
