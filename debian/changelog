@@ -1,3 +1,10 @@
+abagnale (0.9836-1) unstable; urgency=medium
+
+  * Upstream tag v0/9836
+  * Update thread timeout from 2.5 minutes to 100ms
+
+ -- Christian Schulte <cs@schulte.it>  Thu, 15 Oct 2026 14:29:09 +0200
+
 abagnale (0.9834-2) unstable; urgency=medium
 
   * Stick to default thread timeout
