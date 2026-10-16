@@ -1,12 +1,12 @@
-Description: Applies Linux specific updates
+Description: Applies Linux related updates
 Author: Christian Schulte <cs@schulte.it>
-Last-Update: 2026-10-07
+Last-Update: 2026-10-16
 
---- abagnale-0.9803.orig/Makefile
-+++ abagnale-0.9803/Makefile
-@@ -52,7 +52,7 @@ CONFIG=
- #CONFIG+=-DDEFAULT_ABAG_DATABASE_TARGET=\"ABAGNALE\"
+--- abagnale-0.9846.orig/Makefile
++++ abagnale-0.9846/Makefile
+@@ -53,7 +53,7 @@ CONFIG=
  #CONFIG+=-DDEFAULT_ABAG_DATABASE_USER=\"abagnale\"
+ #CONFIG+=-DDEFAULT_ABAG_HTTP_RETRY_SECONDS=3
  #CONFIG+=-DDEFAULT_ABAG_HTTP_TIMEOUT_MILLIS=60000L
 -#CONFIG+=-DDEFAULT_ABAG_THREAD_TIMEOUT_MILLIS=120500
 +CONFIG+=-DDEFAULT_ABAG_THREAD_TIMEOUT_MILLIS=100
