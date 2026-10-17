@@ -1,3 +1,9 @@
+abagnale (0.9847-1) unstable; urgency=medium
+
+  * Upstream tag v0/9847
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 17 Oct 2026 07:01:47 +0200
+
 abagnale (0.9846-2) unstable; urgency=medium
 
   * Updated patches
