@@ -5,8 +5,8 @@
 The port creates a user abagnale with home directory /var/lib/abagnale.
 Maintenance should be done by switching to that user.
 
-Preparing the database
-======================
+Database Preparation
+====================
 
 The database schema will transfer all ownership to the abagnale database role.
 That role must be created before creating the database.
@@ -40,8 +40,25 @@ system to stop the server from swapping gigabytes to temporary files.
 	work_mem = 32MB
 	maintenance_work_mem = 4GB
 
-Maintenance
-===========
+Database Maintenance
+====================
+
+The application intentionally exits on any database error, including a
+PostgreSQL server restart or a transient connection loss. It is recommended to
+always perform a clean shutdown so that open transactions can finish and state
+can be flushed before performing database host maintenance.
+
+	# systemctl stop abagnale
+
+In case a clean stop of the application is not practical, e.g. due to
+unattended security updates of a remote database host, the abagnale.service
+is setup to restart the application always.
+
+	# systemctl edit abagnale.service
+	Restart=
+	RestartSec=
+	Restart=always
+	RestartSec=300
 
 The database should be vacuumed periodically by running abagnalectl vacuum.
 The vacuum command of the abagnalectl maintenance application needs to be
