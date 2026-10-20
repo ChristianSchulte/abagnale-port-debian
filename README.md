@@ -4,8 +4,8 @@ You'll need to install some packages needed for building packages first.
 
 ```console
 user@host:~$ sudo apt update
-user@host:~$ sudo apt install build-essential debhelper devscripts
-user@host:~/abagnale-port-debian$ sudo apt build-dep .
+user@host:~$ sudo apt install devscripts equivs
+user@host:~/abagnale-port-debian$ sudo mk-build-deps -i -r
 ```
 
 Creating the packages involves multiple commands to issue. The following script
