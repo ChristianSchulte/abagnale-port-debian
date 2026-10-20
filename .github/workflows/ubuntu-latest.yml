@@ -48,10 +48,10 @@ jobs:
       with:
         name: abagnale-port-debian-${{ matrix.os }}-${{ matrix.c_compiler }}-${{ matrix.build_type }}
         path: |
-          ${{ github.workspace }}/*.deb
-          ${{ github.workspace }}/*.ddeb
-          ${{ github.workspace }}/*.orig.tar.gz
-          ${{ github.workspace }}/*.debian.tar.xz
-          ${{ github.workspace }}/*.dsc
-          ${{ github.workspace }}/*.buildinfo
-          ${{ github.workspace }}/*.changes
+          ${{ github.workspace }}/../*.deb
+          ${{ github.workspace }}/../*.ddeb
+          ${{ github.workspace }}/../*.orig.tar.gz
+          ${{ github.workspace }}/../*.debian.tar.xz
+          ${{ github.workspace }}/../*.dsc
+          ${{ github.workspace }}/../*.buildinfo
+          ${{ github.workspace }}/../*.changes
