@@ -48,9 +48,10 @@ jobs:
       with:
         name: abagnale-port-debian-${{ matrix.os }}-${{ matrix.c_compiler }}-${{ matrix.build_type }}
         path: |
-          ${{ steps.strings.outputs.build-output-dir }}/../*.deb
-          ${{ steps.strings.outputs.build-output-dir }}/../*.orig.tar.gz
-          ${{ steps.strings.outputs.build-output-dir }}/../*.debian.tar.xz
-          ${{ steps.strings.outputs.build-output-dir }}/../*.dsc
-          ${{ steps.strings.outputs.build-output-dir }}/**/*.buildinfo
-          ${{ steps.strings.outputs.build-output-dir }}/**/*.changes
+          ${{ github.workspace }}/*.deb
+          ${{ github.workspace }}/*.ddeb
+          ${{ github.workspace }}/*.orig.tar.gz
+          ${{ github.workspace }}/*.debian.tar.xz
+          ${{ github.workspace }}/*.dsc
+          ${{ github.workspace }}/*.buildinfo
+          ${{ github.workspace }}/*.changes
