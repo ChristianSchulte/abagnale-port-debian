@@ -36,7 +36,7 @@ jobs:
       if: runner.os == 'Linux'
       run : |
         sudo apt-get update
-        sudo apt-get install devscripts
+        sudo apt-get install devscripts equivs
         sudo mk-build-deps -i -r
 
     - name: Build
