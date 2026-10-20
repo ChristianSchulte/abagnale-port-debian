@@ -42,16 +42,15 @@ jobs:
     - name: Build
       run: debian/build
 
-    - name: Upload build artifacts
-      if: success()
+    - name: Stage Artifacts
+      run: |
+        mkdir -p ${{ github.workspace }}/artifacts
+        find .. -maxdepth 1 -type f \( -name "*.deb" -o -name "*.ddeb" -o -name "*.orig.tar.gz" -o -name "*.debian.tar.xz" -o -name "*.dsc" -o -name "*.buildinfo" -o -name "*.changes" \) -exec cp {} ${{ github.workspace }}/artifacts/ \;
+
+    - name: Upload Artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: abagnale-port-debian-${{ matrix.os }}-${{ matrix.c_compiler }}-${{ matrix.build_type }}
-        path: |
-          ${{ github.workspace }}/../*.deb
-          ${{ github.workspace }}/../*.ddeb
-          ${{ github.workspace }}/../*.orig.tar.gz
-          ${{ github.workspace }}/../*.debian.tar.xz
-          ${{ github.workspace }}/../*.dsc
-          ${{ github.workspace }}/../*.buildinfo
-          ${{ github.workspace }}/../*.changes
+        name: abagnale-port-debian-${{ matrix.os }}-${{ matrix.compiler }}-${{ matrix.build_type }}
+        path: ${{ github.workspace }}/artifacts/
+        if-no-files-found: error
+
