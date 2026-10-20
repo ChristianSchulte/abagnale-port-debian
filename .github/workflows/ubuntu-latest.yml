@@ -2,9 +2,9 @@ name: Ubuntu (latest)
 
 on:
   push:
-    branches: [ "unstable" ]
+    branches: [ "trixie" ]
   pull_request:
-    branches: [ "unstable" ]
+    branches: [ "trixie" ]
 
 jobs:
   build:
