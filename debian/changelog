@@ -1,3 +1,9 @@
+abagnale (0.9867-2) unstable; urgency=medium
+
+  * Ensure abagnalectl-dump.service is run in an UTF-8 environment
+
+ -- Christian Schulte <cs@schulte.it>  Thu, 29 Oct 2026 10:03:39 +0100
+
 abagnale (0.9867-1) unstable; urgency=medium
 
   * Upstream tag v0/9867
