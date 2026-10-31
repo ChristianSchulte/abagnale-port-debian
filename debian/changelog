@@ -1,3 +1,9 @@
+abagnale (0.9869-2) unstable; urgency=medium
+
+  * Double thread timeout add 50% headroom for 100ms exchange limit
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 31 Oct 2026 10:06:40 +0100
+
 abagnale (0.9869-1) unstable; urgency=medium
 
   * Upstream tag v0/9869
