@@ -1,5 +1,5 @@
 #!/bin/sh
-# Abagnale Algorithmic Trading System Publishing
+# Abagnale Algorithmic Trading System Publish Service
 set -e
 
 PLOTSDIR=/var/lib/abagnale/plots

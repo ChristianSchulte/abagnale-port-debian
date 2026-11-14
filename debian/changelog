@@ -1,3 +1,9 @@
+abagnale (0.9881-2) unstable; urgency=medium
+
+  * Updated various systemd service and unit descriptions
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 14 Nov 2026 05:22:24 +0100
+
 abagnale (0.9881-1) unstable; urgency=medium
 
   * Upstream tag v0/9881

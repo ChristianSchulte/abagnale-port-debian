@@ -1,5 +1,5 @@
 [Unit]
-Description=Abagnale Algorithmic Trading System Publishing
+Description=Abagnale Algorithmic Trading System Publish Service
 
 [Service]
 Type=oneshot

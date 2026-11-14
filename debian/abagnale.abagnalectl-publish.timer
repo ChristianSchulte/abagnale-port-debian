@@ -1,5 +1,5 @@
 [Unit]
-Description=Abagnale Algorithmic Trading System Pusblishing Timer
+Description=Abagnale Algorithmic Trading System Pusblish Service Timer
 
 [Timer]
 OnCalendar=hourly
