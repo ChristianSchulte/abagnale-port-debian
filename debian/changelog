@@ -1,3 +1,9 @@
+abagnale (0.9883-5) unstable; urgency=medium
+
+  * Preserve umask in abagnalectl-publish
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 21 Nov 2026 06:12:28 +0100
+
 abagnale (0.9883-4) unstable; urgency=medium
 
   * Preserve umask in abagnalectl-publish
