@@ -1,3 +1,9 @@
+abagnale (0.9883-3) unstable; urgency=medium
+
+  * Preserve umask in abagnalectl-publish
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 21 Nov 2026 04:49:48 +0100
+
 abagnale (0.9883-2) unstable; urgency=medium
 
   * Make the abagnalectl-publish service try to avoid gnuplot

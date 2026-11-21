@@ -4,6 +4,7 @@ set -e
 
 PLOTSDIR=/var/lib/abagnale/plots
 PUBLISHDIR=/var/cache/abagnale/publish
+UMASK=$(umask)
 
 if [ "$(id -un)" != "abagnale" ]; then
 	echo "not user abagnale" >&2
@@ -38,6 +39,7 @@ for m in "$PLOTSDIR"/bitvavo/trend/*.m "$PLOTSDIR"/coinbase/trend/*.m; do
 	[ -f "$svg" ] && [ "$svg" -nt "$m" ] && continue
 	mkdir -p "$(dirname "$svg")"
 	(
+		umask "$UMASK"
 		cd /tmp
 		octave --quiet --no-gui --eval "\
 			toolkits = available_graphics_toolkits();\
