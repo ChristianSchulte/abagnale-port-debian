@@ -1,3 +1,10 @@
+abagnale (0.9883-2) unstable; urgency=medium
+
+  * Make the abagnalectl-publish service try to avoid gnuplot
+  * Add xvfb to the list of package suggestions
+
+ -- Christian Schulte <cs@schulte.it>  Sat, 21 Nov 2026 02:00:04 +0100
+
 abagnale (0.9883-1) unstable; urgency=medium
 
   * Upstream tag v0/9883
