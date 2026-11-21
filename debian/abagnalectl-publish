@@ -19,6 +19,16 @@ if [ ! -d "$PLOTSDIR" ]; then
 	exit 0
 fi
 
+if [ -z "$DISPLAY" ]; then
+	if command -v Xvfb >/dev/null; then
+		export DISPLAY=:0
+		Xvfb >/dev/null 2>&1 &
+		XVFB_PID=$!
+		sleep 1
+		trap "kill $XVFB_PID 2>/dev/null || true" EXIT
+	fi
+fi
+
 mkdir -p "$PUBLISHDIR"
 
 for m in "$PLOTSDIR"/bitvavo/trend/*.m "$PLOTSDIR"/coinbase/trend/*.m; do
@@ -27,10 +37,20 @@ for m in "$PLOTSDIR"/bitvavo/trend/*.m "$PLOTSDIR"/coinbase/trend/*.m; do
 	svg="$PUBLISHDIR/${rel%.m}.svg"
 	[ -f "$svg" ] && [ "$svg" -nt "$m" ] && continue
 	mkdir -p "$(dirname "$svg")"
-	octave --quiet --no-gui --eval "\
-		run(\"$m\"); \
-		print(\"-dsvg\", \"$svg\"); \
-	" >/dev/null 2>/dev/null || echo "Failure publishing $m"
+	(
+		cd /tmp
+		octave --quiet --no-gui --eval "\
+			toolkits = available_graphics_toolkits();\
+			if any(strcmp(toolkits, \"qt\"));\
+				graphics_toolkit(\"qt\");\
+			elseif any(strcmp(toolkits, \"fltk\"));\
+				graphics_toolkit(\"fltk\");\
+			endif;\
+			set(0, 'defaultfigurevisible', 'off');\
+			run(\"$m\");\
+			print(\"-dsvg\", \"-svgconvert\", \"$svg\");\
+		" >/dev/null 2>&1
+	) || echo "Failure publishing $m"
 done
 
 exit 0
