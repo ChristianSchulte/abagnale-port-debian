@@ -49,6 +49,9 @@ for m in "$PLOTSDIR"/bitvavo/trend/*.m "$PLOTSDIR"/coinbase/trend/*.m; do
 		run(\"$m\");\
 		print(\"-dsvg\", \"-svgconvert\", \"$svg\");\
 	" >/dev/null 2>&1 || echo "Failure publishing $m"
+	if [ -f "$svg" ]; then
+		chmod =rw "$svg"
+	fi
 done
 
 exit 0
