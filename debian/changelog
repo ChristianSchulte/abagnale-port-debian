@@ -1,3 +1,9 @@
+abagnale (0.9885-1) unstable; urgency=medium
+
+  * Upstream tag v0/9885
+
+ -- Christian Schulte <cs@schulte.it>  Sun, 22 Nov 2026 02:24:06 +0100
+
 abagnale (0.9883-5) unstable; urgency=medium
 
   * Preserve umask in abagnalectl-publish
